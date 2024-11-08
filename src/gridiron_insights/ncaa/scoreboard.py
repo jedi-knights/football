@@ -47,12 +47,3 @@ def display_scores(scoreboard: RootModel):
     headers = ["Date", "Home Team", "Home Score", "Away Team", "Away Score", "Game State"]
     print(tabulate(table, headers=headers, tablefmt="grid"))
 
-# Example usage
-if __name__ == "__main__":
-    try:
-        scoreboard = fetch_ncaa_scoreboard("fcs", 2024, 11)
-        display_scores(scoreboard)
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching data: {e}")
-
-    sys.exit(0)
