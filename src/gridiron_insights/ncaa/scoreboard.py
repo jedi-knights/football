@@ -4,6 +4,7 @@ from pprint import pprint
 
 import requests
 from gridiron_insights.ncaa.models import RootModel
+from tabulate import tabulate
 
 def fetch_ncaa_scoreboard(division: str, year: int, month: int) -> RootModel:
     url = f"https://data.ncaa.com/casablanca/scoreboard/football/{division}/{year}/{month}/scoreboard.json"
@@ -28,11 +29,29 @@ def fetch_ncaa_scoreboard(division: str, year: int, month: int) -> RootModel:
     else:
         response.raise_for_status()
 
+
+def display_scores(scoreboard: RootModel):
+    table = []
+    for game in scoreboard.games:
+        game_details = game.game
+        row = [
+            game_details.startDate,
+            game_details.home.names.full,
+            game_details.home.score,
+            game_details.away.names.full,
+            game_details.away.score,
+            game_details.gameState
+        ]
+        table.append(row)
+
+    headers = ["Date", "Home Team", "Home Score", "Away Team", "Away Score", "Game State"]
+    print(tabulate(table, headers=headers, tablefmt="grid"))
+
 # Example usage
 if __name__ == "__main__":
     try:
         scoreboard = fetch_ncaa_scoreboard("fcs", 2024, 11)
-        pprint(scoreboard.model_dump())
+        display_scores(scoreboard)
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
 
