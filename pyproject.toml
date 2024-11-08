@@ -12,18 +12,18 @@ license = {text = "MIT"}
 authors = [
     {name = "Omar Crosby", email = "omar.crosby@gmail.com"}
 ]
-
-[project.urls]
-homepage = "https://github.com/jedi-knights/gridiron-insights"
-repository = "https://github.com/jedi-knights/gridiron-insights"
-
-[project.dependencies]
 dependencies = [
     "click",
     "numpy",
     "pandas",
     "requests",
+    "pydantic"
 ]
+
+[project.urls]
+homepage = "https://github.com/jedi-knights/gridiron-insights"
+repository = "https://github.com/jedi-knights/gridiron-insights"
+
 
 [tool.pytest.ini_options]
 minversion = "6.0"
