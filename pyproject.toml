@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gridiron-insights"
+version = "0.1.0"
+description = "A python module to experiment with football data."
+readme = "README.md"
+requires-python = ">=3.6"
+license = {text = "MIT"}
+authors = [
+    {name = "Omar Crosby", email = "omar.crosby@gmail.com"}
+]
+
+[project.urls]
+homepage = "https://github.com/jedi-knights/gridiron-insights"
+repository = "https://github.com/jedi-knights/gridiron-insights"
+
+[project.dependencies]
+dependencies = [
+    "click",
+    "numpy",
+    "pandas",
+    "requests",
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
